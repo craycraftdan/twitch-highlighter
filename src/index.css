@@ -1,0 +1,19 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  background-color: #2C2737;
+}
+
+.App {
+  font-family: 'Roboto', sans-serif;
+  background-color: #2C2737;
+}
