@@ -2,7 +2,7 @@ import React from 'react';
 
 // import AvatarPlaceholder from './Avatar-Placeholder.png';
 // import HeartIconFilled from '../HeartFilled/index';
-import HeartIconEmpty from '../HeartEmpty/index';
+import HeartIconEmpty from './Heart-Icon-Empty.svg';
 
 import {
     StreamerContainer,
@@ -13,17 +13,11 @@ import {
     Streamer,
     Status,
     Game, 
-    Live
+    Live,
+    IconBox,
+    Icon
 } from './styles';
 
-const HeartIconStyle = {
-    width: '50px',
-    height: '50px',
-    position: 'absolute',
-    top: '33px',
-    left: '33px',
-    opacity: '0'
-}
 
 const StreamerBox = (props) => {
     const { streamer } = props.streamer
@@ -31,7 +25,9 @@ const StreamerBox = (props) => {
         <StreamerContainer>
             <AvatarContainer>
                 <Avatar src={streamer.avatar} alt={streamer.streamer} />
-                <HeartIconEmpty style={HeartIconStyle} />
+                <IconBox>
+                    <Icon src={HeartIconEmpty} />
+                </IconBox>
             </AvatarContainer>
             <InfoBox>
                 <Streamer> { streamer.streamer } </Streamer>

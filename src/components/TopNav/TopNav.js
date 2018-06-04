@@ -8,9 +8,9 @@ import { StyledNav } from './styles';
 const TopNav = (props) => {
     return (
         <StyledNav>
-            <TwitchLogo style={{width: '32px', height: '32px', marginLeft: '10px'}}/>
+            <TwitchLogo style={{width: '30px', height: '30px', marginLeft: '24px'}}/>
             <Search setSelectedStreamer={props.setSelectedStreamer} />
-            <div></div>
+            <div style={{width: '323px'}}></div>
         </StyledNav>
     )
 }

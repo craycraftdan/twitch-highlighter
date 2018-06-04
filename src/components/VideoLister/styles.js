@@ -18,6 +18,7 @@ export const Video = styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    position: relative;
 `
 
 export const ThumbNail = styled.img`
@@ -34,13 +35,6 @@ export const InfoContainer = styled.div`
     flex-direction: row;
 `
 
-export const BoxArt = styled.div`
-    display: inline-block;
-    width: 40px;
-    height: 56px;
-    border: 1px solid white;
-`
-
 export const TitleContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -48,16 +42,45 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.div`
     display: inline-block;
-    overflow: hidden;
     font-size: 15px;
     margin-left: 5px;
     opacity: 0.9;
     align-self: top;
+    max-width: 282px;
+    white-space: nowrap;
 `
 export const Subtitle = styled.div`
     display: inline-block;
-    overflow: hidden;
     margin-left: 5px;
-    opacity: 0.7;
-    font-size: 13px;
+    opacity: 0.6;
+    font-size: 12px;
+`
+
+export const IconBox = styled.div`
+    width: 100%;
+    height: 187px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    opacity: 0;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:hover img {
+        width: 38px;
+        height: 38px;
+    }
+`
+export const Icon = styled.img`
+    width: 0px;
+    height: 0px;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 `

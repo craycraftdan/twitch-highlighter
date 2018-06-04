@@ -11,6 +11,7 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: center;
     max-width: 1220px;
+    margin-bottom: 60px;
 
     @media only screen and (max-width: 1650px) {
         max-width: 800px;

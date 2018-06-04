@@ -21,13 +21,10 @@ export const StreamerContainer = styled.div`
 
 export const AvatarContainer = styled.div`
     position: relative;
-
-    &:hover {
-        opacity: 0.3;
-    }
 `
 
 export const Avatar = styled.img`
+    positon: absolute;
     width: 116px;
     height: 116px;
     border-radius: 2px;
@@ -73,4 +70,37 @@ export const Game = styled.div`
 export const Live = styled.div`
     margin-top: auto;
     font-size: 14px;
+`
+
+export const IconBox = styled.div`
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    opacity: 0;
+    z-index: 10;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:hover img {
+        width: 38px;
+        height: 38px;
+        opacity: 1;
+    }
+`
+
+export const Icon = styled.img`
+    width: 0px;
+    height: 0px;
+    z-index: 110;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 `
