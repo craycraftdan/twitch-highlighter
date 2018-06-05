@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './index.css';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+import { getTopGamesInfo } from './actions/index';
 
 import TopNav from './components/TopNav/index';
 import LeftNav from './components/LeftSideMenu/index';
@@ -15,6 +18,11 @@ const FlexThree = styled.div`
 `
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getTop();
+  }
+
   render() {
     return (
       <div>
@@ -36,4 +44,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchTopProps = (dispatch) => ({
+  getTop: (streamer) => dispatch(getTopGamesInfo())
+});
+
+export default connect(null, mapDispatchTopProps)(App);

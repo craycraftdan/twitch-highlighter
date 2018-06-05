@@ -24,7 +24,6 @@ export const AvatarContainer = styled.div`
 `
 
 export const Avatar = styled.img`
-    positon: absolute;
     width: 116px;
     height: 116px;
     border-radius: 2px;
@@ -75,7 +74,7 @@ export const Live = styled.div`
 export const IconBox = styled.div`
     cursor: pointer;
     width: 100%;
-    height: 100%;
+    height: 116px;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;

@@ -1,7 +1,8 @@
 import {
     GET_STREAMER_INFO,
     GET_STREAMER_VIDEOS,
-    GET_LIVE_STATUS
+    GET_LIVE_STATUS,
+    GET_TOP_GAMES_INFO
 } from './constants';
 
 import { clientID } from '../keys';
@@ -67,7 +68,6 @@ export const getChannelClips = (streamerName) => {
         fetch(url, {headers: {"client-id": clientID, "Accept": "application/vnd.twitchtv.v5+json"}})
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 let payload = [];
                 data.clips.forEach( video => {
                     let vidObj = { 
@@ -93,7 +93,6 @@ export const getChannelUploads = (streamerName) => {
         fetch(url, {headers: {"client-id": clientID}})
         .then(res => res.json())
         .then(data => {
-            console.log(data.videos)
             dispatch({type: GET_STREAMER_VIDEOS, payload: data.videos })
         })
         .catch(err => console.log(err))
@@ -101,15 +100,13 @@ export const getChannelUploads = (streamerName) => {
 }
 
 export const getGameBoxArt = (game) => {
-    /* 
-        HTTP 429 (Too Many Requests)  => work out how to slow this down
-    */
-    if(game || game !== "" || game.length > 1 || game !== 'null' || game !== 'undefined') {
+    /* HTTP 429 (Too Many Requests)  => work out how to slow this down */
+    if(game && game !== "" && game.length > 1 && game !== 'null' && game !== 'undefined' && game !== 'Unlisted') {
         const url = `https://api.twitch.tv/helix/games?name=${game}`
+        console.log(`Reaching out to twitch for: ${game}`)
         return fetch(url, {headers: {"client-id": clientID}})
                 .then(res => res.json())
                 .then(data => {
-                    // console.log('URL data. data', data.data, game)
                     if(data.data) {
                         let url = data.data[0].box_art_url !== 'undefined' ? data.data[0].box_art_url.replace("{width}", "40").replace("{height}", "56") : false;
                         return url
@@ -117,9 +114,28 @@ export const getGameBoxArt = (game) => {
                         return Promise.reject(`No boxart! ${game}`)
                     }
                 })
-                .catch(err => console.log(err)) 
-                // Twitch api is limiting the amount of request I can make harshly, so sometimes the box art doesn't load
+                .catch(err => console.log(err))
     } else {
         return Promise.reject(`No boxart! ${game}`)
     }
+}
+
+export const getTopGamesInfo = () => {
+    const url = `https://api.twitch.tv/kraken/games/top?limit=100`;
+    return (dispatch) => {
+            fetch(url, {headers: {"client-id": clientID}})
+                .then(res => res.json())
+                .then(data => {
+                    let games = [];
+                    data.top.forEach(item => {
+                        let game = {
+                            title: item.game.name,
+                            url: item.game.box.small
+                        }
+                        games.push(game)
+                    })
+                    dispatch({type: GET_TOP_GAMES_INFO, payload: games})
+                })
+                .catch(err => console.log(err))
+            }
 }

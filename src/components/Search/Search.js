@@ -15,6 +15,7 @@ class Search extends Component {
         this.onChange = this.onChange.bind(this);
         this.onKeyPress = this.onKeyPress.bind(this);
         this.updateFilter = this.updateFilter.bind(this);
+        this.validateStreamer = this.validateStreamer.bind(this);
     }
 
     onChange(e) {
@@ -25,9 +26,18 @@ class Search extends Component {
         this.setState({filter: e.target.value});
     }
 
+    validateStreamer() {
+        const { streamer } = this.state;
+        if(streamer && /^[a-zA-Z0-9][\w]{3,24}$/.test(streamer) ) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     onKeyPress(e) {
         const streamer = this.state.streamer;
-        if(e.key === 'Enter' && this.state.streamer.length > 2 && this.state.streamer.length < 26) {
+        if(e.key === 'Enter' && this.validateStreamer()) {
             this.props.getStreamerInfo(streamer);
             this.props.getLiveInfo(streamer);
             if(this.state.filter === 'Highlights') {
