@@ -5,6 +5,7 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 # ToDo's
 
 ### Streamer Header
+* [X] Add Header and pull data from twitch API on streamer
 * [X] Rewrite to scale
 * [X] Work out the favorited streamer state better
 * [X] Adjust the favorited icon
@@ -20,6 +21,7 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [ ] Add Ability to remove a video
 
 ### Other Items
+* [X] Setup all needed API calls so I can use them as needed
 * [X] Convert the app to Redux
 * [ ] Build out the app help stuff before searching
 * [ ] Layout the loading components and build HOC
