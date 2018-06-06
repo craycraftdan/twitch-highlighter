@@ -91,8 +91,8 @@ export const IconBox = styled.div`
     }
 
     &:hover img {
-        width: 38px;
-        height: 38px;
+        width: 44px;
+        height: 44px;
         opacity: 1;
     }
 `

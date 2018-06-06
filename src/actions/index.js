@@ -7,23 +7,39 @@ import {
 
 import { clientID } from '../keys';
 
+
 export const getStreamer = (streamerName) => {
     const url = `https://api.twitch.tv/kraken/channels/${streamerName}?client_id=${clientID}`;
     return (dispatch) => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                dispatch({ 
-                    type: GET_STREAMER_INFO, 
-                    payload: {
-                        streamer: data.display_name,
-                        id: data._id,
-                        game: data.game,
-                        status: data.status,
-                        avatar: data.logo
-                    }}) 
+                if(data.error) {
+                    dispatch({ 
+                        type: GET_STREAMER_INFO, 
+                        payload: {
+                            streamer: "No Results",
+                            id: "",
+                            game: "",
+                            status: "Unable to find a streamer by that name!",
+                            avatar: null
+                        }
+                    }) 
+                } else {
+                    dispatch({ 
+                        type: GET_STREAMER_INFO, 
+                        payload: {
+                            streamer: data.display_name,
+                            id: data._id,
+                            game: data.game,
+                            status: data.status,
+                            avatar: data.logo
+                        }
+                    }) 
+                }
+
             })
-            .catch( err => console.log('err', err) )
+            .catch( err => console.log(err) )
     }
 }
 
@@ -57,7 +73,9 @@ export const getChannelVideos = (streamerName) => {
     return (dispatch) => {
         fetch(url)
             .then(res => res.json())
-            .then(data => dispatch({type: GET_STREAMER_VIDEOS, payload: data.videos }))
+            .then(data => {
+                dispatch({type: GET_STREAMER_VIDEOS, payload: data.videos })
+            })
             .catch(err => console.log('err', err)) 
     }
 }
@@ -103,7 +121,7 @@ export const getGameBoxArt = (game) => {
     /* HTTP 429 (Too Many Requests)  => work out how to slow this down */
     if(game && game !== "" && game.length > 1 && game !== 'null' && game !== 'undefined' && game !== 'Unlisted') {
         const url = `https://api.twitch.tv/helix/games?name=${game}`
-        console.log(`Reaching out to twitch for: ${game}`)
+        // console.log(`Reaching out to twitch for: ${game}`)
         return fetch(url, {headers: {"client-id": clientID}})
                 .then(res => res.json())
                 .then(data => {

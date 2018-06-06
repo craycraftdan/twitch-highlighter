@@ -32,7 +32,6 @@ class VideoList extends Component {
                     this.props.videos.length > 0
                         ?
                         this.props.videos.map( (video, i) => {
-                            // duration views
                             let date = Date.parse(video.published_at);
                             let dateString = new Date(date);
                             return (
@@ -44,7 +43,7 @@ class VideoList extends Component {
                                     </IconBox>
 
                                     <InfoTagsBox>
-                                        <Tag> <MiniIcon src={Time} /> { video.duration } </Tag>
+                                        <Tag> <MiniIcon src={Time} /> { video.duration ? video.duration : video.length } </Tag>
                                         <Tag> <MiniIcon src={Views} /> { video.views.toLocaleString('en-US') } </Tag>
                                     </InfoTagsBox>
                                     

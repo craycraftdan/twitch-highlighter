@@ -8,6 +8,7 @@ export const VideoListContainer = styled.div`
     font-size: 14px;
     position: relative;
     color: white;
+    width: 100%;
 `
 
 export const Video = styled.div`

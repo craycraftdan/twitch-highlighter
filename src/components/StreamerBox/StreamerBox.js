@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { UPDATE_FAV_STREAMERS } from '../../actions/constants';
+import { UPDATE_FAV_STREAMERS, REMOVE_FAV_STREAMER } from '../../actions/constants';
 
-// import AvatarPlaceholder from './Avatar-Placeholder.png';
-// import HeartIconFilled from '../HeartFilled/index';
-import HeartIconEmpty from './Heart-Icon-Empty.svg';
+import AvatarPlaceholder from './Avatar-Placeholder.png';
+import HeartIconFilled from './Icon-Heart-Filled.svg';
+import HeartIconEmpty from './Icon-Heart-Empty.svg';
 
 import {
     StreamerContainer,
@@ -26,16 +26,42 @@ class StreamerBox extends Component {
         super(props);
         this.state = {}
         this.updateFavs = this.updateFavs.bind(this);
+        this.checkForMatches = this.checkForMatches.bind(this);
+        this.getIcon = this.getIcon.bind(this);
     }
 
-    
+    getIcon(streamer) {
+        const { favs } = this.props
+        let icon = HeartIconEmpty;
+        favs.forEach(fav => {
+            if(fav.streamer === streamer) {
+                icon = HeartIconFilled
+            }
+        })
+        return icon
+    }
+
+    checkForMatches(streamer) {
+        const { favs } = this.props
+        let results = false;
+        favs.forEach(fav => {
+            if(fav.streamer === streamer) {
+                results = true 
+            }
+        })
+        return results
+    }
+
     updateFavs() {
-        console.log('hit')
         const { streamer } = this.props.streamer;
-        this.props.updateFavStreamers({fav: {
-            streamer: streamer.streamer, 
-            avatar: streamer.avatar}
-        });
+        if(streamer.streamer !== "No Results" && this.checkForMatches(streamer.streamer) !== true) {
+            this.props.updateFavStreamers({fav: {
+                streamer: streamer.streamer, 
+                avatar: streamer.avatar}
+            })
+        } else {
+            this.props.removeFavStreamer({fav:{streamer: streamer.streamer}});
+        }
     }
 
     render() {
@@ -43,9 +69,12 @@ class StreamerBox extends Component {
         return (
             <StreamerContainer>
                 <AvatarContainer>
-                    <Avatar src={streamer.avatar} alt={streamer.streamer} />
+                    <Avatar 
+                        src={streamer.avatar ? streamer.avatar : AvatarPlaceholder} 
+                        alt={streamer.streamer} 
+                        />
                     <IconBox onClick={this.updateFavs}>
-                        <Icon src={HeartIconEmpty} />
+                        <Icon src={this.getIcon(streamer.streamer)} />
                     </IconBox>
                 </AvatarContainer>
                 <InfoBox>
@@ -67,8 +96,13 @@ StreamerBox.defaultProps = {
     streamer: null
 }
 
-const mapDispatchTopProps = (dispatch) => ({
-    updateFavStreamers: ({fav}) => dispatch({type: UPDATE_FAV_STREAMERS, payload: fav})
+const mapStateToProps = (state) => ({
+    favs: state.favoriteStreamers.streamerList
 });
 
-export default connect(null, mapDispatchTopProps)(StreamerBox)
+const mapDispatchTopProps = (dispatch) => ({
+    updateFavStreamers: ({fav}) => dispatch({type: UPDATE_FAV_STREAMERS, payload: fav }),
+    removeFavStreamer: ({fav}) => dispatch({type: REMOVE_FAV_STREAMER, payload: fav})
+});
+
+export default connect(mapStateToProps, mapDispatchTopProps)(StreamerBox)

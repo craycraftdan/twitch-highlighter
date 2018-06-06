@@ -33,7 +33,6 @@ export const StreamerAvatar = styled.img`
     margin-bottom: 10px;
     width: 49px;
     height: 49px;
-    background-color: #2C2737;
     border-radius: 2px;
     cursor: pointer;
 `
