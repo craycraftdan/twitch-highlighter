@@ -34,3 +34,5 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [X] Duration not displaying on highlights
 * [X] flexbox for only two videos doesn't justify content correctly
 * [ ] Have favs when clicked populate videos based on current selected filter
+* [ ] Main content needs to scroll up and the menus need to be fixed
+* [ ] Review app and add UI sugar

@@ -8,4 +8,7 @@ export const StyledNav = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
 `;

@@ -5,8 +5,12 @@ import {
     Title,
     InputBox,
     Label,
-    InputName
+    InputName,
+    SubmitBox,
+    Icon
  } from './styles';
+
+ const Create = require('./button-add.svg');
 
 class RightNav extends Component {
     render() {
@@ -17,6 +21,10 @@ class RightNav extends Component {
                     <InputName required />
                     <Label>Name</Label>
                 </InputBox>
+                <SubmitBox>
+                    Create  
+                    <Icon src={Create} />
+                </SubmitBox>
             </RightNavContainer>
         )
     }

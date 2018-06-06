@@ -43,4 +43,20 @@ export const Label = styled.label`
     left: 42px;
     font-size: 16px;
     transition: 0.4s ease all; 
+    pointer-events: none;
+`
+export const SubmitBox = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px;
+    margin-top: 5px;
+`
+export const Icon = styled.img`
+    width: 21px;
+    height: 21px;
+    margin-right: 37px;
+    margin-left: 5px;
+    padding-top: 4px;
+    cursor: pointer;
 `
