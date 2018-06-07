@@ -14,7 +14,7 @@ export const VideoListContainer = styled.div`
 export const Video = styled.div`
     width: 331px;
     height: 260px;
-    margin-top: 15px;
+    margin-top: 20px;
     border-radius: 2px;
     overflow: hidden;
     display: flex;

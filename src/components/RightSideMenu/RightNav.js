@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
-
-import { 
-    RightNavContainer, 
-    Title,
-    InputBox,
-    Label,
-    InputName,
-    SubmitBox,
-    Icon
- } from './styles';
-
- const Create = require('./button-add.svg');
+import { connect } from 'react-redux';
+import { RightNavContainer } from './styles';
+import PlayListTitler from '../PlaylistTitler/index';
+import PlayListVideos from '../PlayListVideos/index';
 
 class RightNav extends Component {
+
     render() {
+        const { playlist } = this.props;
+        console.log(playlist)
         return(
             <RightNavContainer>
-                <Title>Create A Playlist!</Title>
-                <InputBox>
-                    <InputName required />
-                    <Label>Name</Label>
-                </InputBox>
-                <SubmitBox>
-                    Create  
-                    <Icon src={Create} />
-                </SubmitBox>
+                {
+                    (!playlist.length) 
+                        ? <PlayListTitler />
+                        : <PlayListVideos />
+                }
             </RightNavContainer>
         )
     }
-} 
+}
 
-export default RightNav
+export const mapStateToProps = (state) => ({
+    playlist: state.playlist.playlist
+})
+
+export default connect(mapStateToProps)(RightNav)

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const LeftBar = styled.div`
     width: 75px;
+    margin-top: 60px;
     background-color: #231F29;
     min-height: 100vh;
 `

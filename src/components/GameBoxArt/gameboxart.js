@@ -52,7 +52,7 @@ class GameBoxArt extends Component {
             <BoxArt> 
                 <img 
                     src={ this.state.url ? this.state.url : noart } 
-                    style={{width: '40px', height: '56px'}}
+                    style={this.props.style}
                     alt="boxart" />
             </BoxArt>
         )

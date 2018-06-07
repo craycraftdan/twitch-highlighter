@@ -30,6 +30,8 @@ class StreamerBox extends Component {
         this.getIcon = this.getIcon.bind(this);
     }
 
+
+
     getIcon(streamer) {
         const { favs } = this.props
         let icon = HeartIconEmpty;
@@ -83,7 +85,9 @@ class StreamerBox extends Component {
                     <Game> { streamer.game } </Game>
                     {
                         streamer.online
-                            ? <Live> <LiveStatus online/> Live - { streamer.viewers.toLocaleString('en-US') } Viewers</Live>
+                            ?   <Live> 
+                                    <LiveStatus online/> Live - { streamer.viewers.toLocaleString('en-US') } Viewers
+                                </Live>
                             : <Live> <LiveStatus /> Offline</Live>
                     }
                 </InfoBox>

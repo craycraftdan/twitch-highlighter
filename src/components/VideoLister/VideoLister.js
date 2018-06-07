@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { ADD_VIDEO_PLAYLIST } from '../../actions/constants';
 import LoaderVideoList from '../HOCs/LoaderVideoList/index';
 import BoxArt from '../GameBoxArt/index';
 
@@ -25,6 +27,16 @@ import {
 } from './styles';
 
 class VideoList extends Component {
+
+    addVideo(video) {
+        const { playlistTitle } = this.props;
+        if(playlistTitle.length > 2) {
+            this.props.addToPlaylist({video});
+        } else {
+            console.log("display a visable error here");
+        }
+    }
+
     render() {
         return(
             <VideoListContainer>
@@ -37,7 +49,7 @@ class VideoList extends Component {
                             return (
                                 <Video key={i}>
                                     <IconBox>
-                                        <Icon src={Plus} />
+                                        <Icon src={Plus} onClick={() => this.addVideo(video)} />
                                         <Icon src={Play} />
                                         <Icon src={Share} />
                                     </IconBox>
@@ -49,7 +61,9 @@ class VideoList extends Component {
                                     
                                     <ThumbNail src={video.thumbnails[0].url} />
                                     <InfoContainer>
-                                        <BoxArt game={video.game ? video.game : "Unlisted"} />
+                                        <BoxArt 
+                                            style={{width: '40px', height: '56px'}}
+                                            game={video.game ? video.game : "Unlisted"} />
                                         <TitleContainer>
                                             <Title> { video.title ? video.title : "Untitled"} </Title>
                                             <Subtitle> { video.game } <br /> { dateString.toLocaleDateString() } </Subtitle>
@@ -72,4 +86,12 @@ VideoList.defaultProps = {
     videos: []
 }
 
-export default LoaderVideoList(VideoList);
+const mapStateToProps = (state) => ({
+    playlistTitle: state.playlist.playlist
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    addToPlaylist: ({video}) => dispatch({type: ADD_VIDEO_PLAYLIST, payload: video})
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoaderVideoList(VideoList));

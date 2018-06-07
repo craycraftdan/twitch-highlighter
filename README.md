@@ -1,7 +1,6 @@
 # Twitch Highlighter
 The purpose of this app is to give the twitch viewers (fans) a chance to build playlist from clips/highlights/uploads of their favorite twitch streamers and then share them with their friends.
 
-
 # ToDo's
 
 ### Streamer Header
@@ -15,9 +14,10 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [X] Add the ability to click and fast search
 
 ### Playlist Seciton
-* [ ] Build out right menu
+* [X] Build out right menu
 * [ ] Add ability to watch a video from the right menu
-* [ ] Add ability to add a video  
+* [X] Add ability to add a video 
+* [ ] Style videos 
 * [ ] Add Ability to remove a video
 
 ### Other Items
@@ -29,6 +29,9 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [ ] Design a landing page
 * [ ] Design a auth page with twitch
 * [ ] Update fonts on the app
+* [ ] Add Drag and drop ability when creating a playlist
+* [ ] When sharing playlist or video look at sharing to social media options
+* [ ] When using fav streamer from left auto update that streamer name to search input
 
 ### Issues
 * [X] Duration not displaying on highlights
@@ -36,3 +39,4 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [ ] Have favs when clicked populate videos based on current selected filter
 * [ ] Main content needs to scroll up and the menus need to be fixed
 * [ ] Review app and add UI sugar
+* [ ] Playlist allows you to add two of the same videos, fix that.
