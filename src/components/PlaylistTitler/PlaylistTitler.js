@@ -18,15 +18,20 @@ class PlaylistTitler extends Component {
             title: ""
         }
         this.updateTitle = this.updateTitle.bind(this);
+        this.handleEnter = this.handleEnter.bind(this);
         this.saveTitle = this.saveTitle.bind(this);
     }
 
-    updateTitle(e) {
+    updateTitle = (e) => {
         const { value } = e.target;
         this.setState({title: value});
     }
 
-    saveTitle() {
+    handleEnter = (e) => {
+        e.keyCode === 13 && this.saveTitle()
+    }
+
+    saveTitle = () => {
         const title = this.state;
         this.props.saveTitle(title);
         this.setState({title: ""});
@@ -41,6 +46,7 @@ class PlaylistTitler extends Component {
                         required 
                         value={this.state.title}
                         onChange={this.updateTitle}
+                        onKeyDown={this.handleEnter}
                         />
                     <Label>Name</Label>
                 </InputBox>
