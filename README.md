@@ -17,8 +17,8 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [X] Build out right menu
 * [ ] Add ability to watch a video from the right menu
 * [X] Add ability to add a video 
-* [ ] Style videos 
-* [ ] Add Ability to remove a video
+* [X] Style videos 
+* [X] Add Ability to remove a video
 
 ### Other Items
 * [X] Setup all needed API calls so I can use them as needed
@@ -32,6 +32,11 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [ ] Add Drag and drop ability when creating a playlist
 * [ ] When sharing playlist or video look at sharing to social media options
 * [ ] When using fav streamer from left auto update that streamer name to search input
+* [ ] Add a filter to video list by game
+* [ ] Add next/prev video inside video player
+
+### Refactors
+* [ ] Move the play video button out of rightvan and videolist component and make reusable
 
 ### Issues
 * [X] Duration not displaying on highlights

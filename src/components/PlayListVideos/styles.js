@@ -8,7 +8,21 @@ export const VideosBox = styled.div`
     padding: 0px 5px 0px 5px;
 `
 export const Title = styled.h3`
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 21px;
+    border-bottom: 1px solid white;
+`
+export const Trash = styled.img`
+    width: 17px;
+    height: 19px;
+    margin-left: 10px;
+    transform: translateY(1px);
+    cursor: pointer;
+    transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `
 export const Video = styled.div`
     width: 250px;
@@ -89,4 +103,25 @@ export const Icon = styled.img`
     height: 0px;
     cursor: pointer;
     transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+`
+export const SocialBox = styled.div`
+    width: 100;
+    height: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`
+export const SocialIcon = styled.img`
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+    cursor: pointer;
+    transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+        transform: scale(1.15) rotate(10deg);
+
+    }
 `

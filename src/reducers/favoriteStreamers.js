@@ -7,7 +7,6 @@ const favoriteStreamers = (state = { streamerList: []}, action) => {
         case UPDATE_FAV_STREAMERS:
             return {...state, streamerList: [...state.streamerList, action.payload] }
         case REMOVE_FAV_STREAMER:
-            console.log(action.payload)
             return {...state, streamerList: [...state.streamerList].filter(streamer => streamer.streamer !== action.payload.streamer) }
         default: 
             return state

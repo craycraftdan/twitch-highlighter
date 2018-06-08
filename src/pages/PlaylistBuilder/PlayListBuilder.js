@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import * as Scroll from 'react-scroll';
-
 import StreamerBox from '../../components/StreamerBox/index';
 import VideoList from '../../components/VideoLister/index';
+import VideoPlayer from '../../components/VideoPlayer/index';
 
 let scroll = Scroll.animateScroll;
 
@@ -46,6 +46,7 @@ class PlayListBuilder extends Component {
                         ? <VideoList videos={this.props.activeStreamer.streamer.videos} />
                         : null
                 }
+                <VideoPlayer />
             </Container>
         )
     }

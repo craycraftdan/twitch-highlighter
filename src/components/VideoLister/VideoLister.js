@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ADD_VIDEO_PLAYLIST } from '../../actions/constants';
+import { ADD_VIDEO_PLAYLIST, UPDATE_MODAL_STATE, UPDATE_ACTIVE_VIDEO } from '../../actions/constants';
 import LoaderVideoList from '../HOCs/LoaderVideoList/index';
 import BoxArt from '../GameBoxArt/index';
 
@@ -28,13 +28,31 @@ import {
 
 class VideoList extends Component {
 
-    addVideo(video) {
+    checkForMatch = (videoTitle) => {
+        const { playlistVideos } = this.props;
+        let result = false;
+        playlistVideos.forEach(video => {
+            if(video.title === videoTitle) {
+                result = true
+            }
+        });
+        return result
+    }
+
+    addVideo = (video) => {
         const { playlistTitle } = this.props;
-        if(playlistTitle.length > 2) {
+        if(playlistTitle.length > 2 && this.checkForMatch(video.title) === false) {
             this.props.addToPlaylist({video});
         } else {
             console.log("display a visable error here");
         }
+    }
+
+    playVideo = (video) => {
+        const { openModal, playVideo } = this.props;
+        let open = true;
+        openModal({open});
+        playVideo({video});
     }
 
     render() {
@@ -50,7 +68,7 @@ class VideoList extends Component {
                                 <Video key={i}>
                                     <IconBox>
                                         <Icon src={Plus} onClick={() => this.addVideo(video)} />
-                                        <Icon src={Play} />
+                                        <Icon src={Play} onClick={() => this.playVideo(video)}/>
                                         <Icon src={Share} />
                                     </IconBox>
 
@@ -87,11 +105,14 @@ VideoList.defaultProps = {
 }
 
 const mapStateToProps = (state) => ({
-    playlistTitle: state.playlist.playlist
+    playlistTitle: state.playlist.playlist,
+    playlistVideos: state.playlist.videos
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addToPlaylist: ({video}) => dispatch({type: ADD_VIDEO_PLAYLIST, payload: video})
+    addToPlaylist: ({video}) => dispatch({type: ADD_VIDEO_PLAYLIST, payload: video}),
+    openModal: ({open}) => dispatch({type: UPDATE_MODAL_STATE, payload: open}),
+    playVideo: ({video}) => dispatch({type: UPDATE_ACTIVE_VIDEO, payload: video})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoaderVideoList(VideoList));

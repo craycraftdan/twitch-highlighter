@@ -8,7 +8,6 @@ class RightNav extends Component {
 
     render() {
         const { playlist } = this.props;
-        console.log(playlist)
         return(
             <RightNavContainer>
                 {
@@ -23,6 +22,8 @@ class RightNav extends Component {
 
 export const mapStateToProps = (state) => ({
     playlist: state.playlist.playlist
-})
+});
+
+
 
 export default connect(mapStateToProps)(RightNav)
