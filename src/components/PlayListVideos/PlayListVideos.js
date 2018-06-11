@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { 
     REMOVE_VIDEO_PLAYLIST, 
+    ADD_VIDEO_PLAYLIST,
     DELETE_PLAYLIST, 
     UPDATE_MODAL_STATE, 
+    VIDEO_DRAGGING,
     UPDATE_ACTIVE_VIDEO 
 } from '../../actions/constants';
 import BoxArt from '../GameBoxArt/index';
@@ -38,6 +40,9 @@ class PlayListVideos extends Component {
         const { remove } = this.props;
         remove({video})
     }
+    preventDefault(event) {
+        event.preventDefault()
+    }
 
     deletePlayList = () => {
         const{ deletePlaylist } = this.props;
@@ -51,10 +56,32 @@ class PlayListVideos extends Component {
         playVideo({video});
     }
 
+    checkMatch = (video) => {
+        let match = false;
+        this.props.videos.forEach(item => {
+            if(item.title === video.title) {
+                match = true 
+            }
+        });
+        return match
+    }
+
+    onDrop = () => {
+        const { addToPlaylist, dragVideo } = this.props;
+        const video = this.props.droppedVideo ? this.props.droppedVideo : null;
+        if(video) {
+            const match = this.checkMatch(video);
+            if(!match) {
+                addToPlaylist({video}) 
+                dragVideo({})
+            }
+        }
+    }
+
     render() {
         const { videos, title } = this.props;
-        return( 
-            <VideosBox>
+        return(
+            <VideosBox onDragOver={this.preventDefault} onDrop={this.onDrop}>            
                 { videos 
                     ? <div>
                         <Title>
@@ -107,6 +134,7 @@ class PlayListVideos extends Component {
                         )
                     })
                 }
+                
             </VideosBox>
         )
     }
@@ -114,14 +142,17 @@ class PlayListVideos extends Component {
 
 const mapStateToProps = (state) => ({
     videos: state.playlist.videos,
-    title: state.playlist.playlist
+    title: state.playlist.playlist,
+    droppedVideo: state.appState.videoDragging
 });
 
 const mapDispatchToProps = (dispatch) => ({
     remove: ({video}) => dispatch({type: REMOVE_VIDEO_PLAYLIST, payload: video}),
+    addToPlaylist: ({video}) => dispatch({type: ADD_VIDEO_PLAYLIST, payload: video}),
     deletePlaylist: () => dispatch({type: DELETE_PLAYLIST, payload: null}),
     openModal: ({open}) => dispatch({type: UPDATE_MODAL_STATE, payload: open}),
-    playVideo: ({video}) => dispatch({type: UPDATE_ACTIVE_VIDEO, payload: video})
+    playVideo: ({video}) => dispatch({type: UPDATE_ACTIVE_VIDEO, payload: video}),
+    dragVideo: ({video}) => dispatch({type: VIDEO_DRAGGING, payload: video})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayListVideos)

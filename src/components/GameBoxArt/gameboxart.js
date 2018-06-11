@@ -15,9 +15,6 @@ class GameBoxArt extends Component {
     }
 
     componentDidMount() {
-        /* randomly delaying the request to help with twitchs API limits */
-        /* Also storing a lot of the most popular games in state here so it only has to reach out to twitch for less common titles */
-        /* May move this logic to redux for the start of the app, also might build it off the top 50 games on twitch at the time */
         let matchedGameUrl = this.checkMatch();
         if(matchedGameUrl) {
             this.setState({url: matchedGameUrl})
@@ -25,13 +22,6 @@ class GameBoxArt extends Component {
             getGameBoxArt(this.props.game)
                 .then( data => {
                     this.setState({url: data ? data : noart })
-                    // This doesn't work because all of the GameBoxArt components render at the same time
-                    // Not the end of the world but would be cool to figure out how to work this in
-                    // this.props.updateTopGamesInfo({game: {
-                    //     title: this.props.game,
-                    //     url: data ? data : noart
-                    // }  
-                    // });
                 })
                 .catch( err => console.log(err) )
         }

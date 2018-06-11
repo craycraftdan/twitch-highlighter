@@ -46,7 +46,9 @@ class PlayListBuilder extends Component {
                         ? <VideoList videos={this.props.activeStreamer.streamer.videos} />
                         : null
                 }
-                <VideoPlayer />
+                {
+                    this.props.activeVideo ? <VideoPlayer /> : null
+                }
             </Container>
         )
     }
@@ -54,7 +56,8 @@ class PlayListBuilder extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    activeStreamer: state.activeStreamer
+    activeStreamer: state.activeStreamer,
+    activeVideo: state.appState.activeVideo
 });
 
 export default connect(mapStateToProps)(PlayListBuilder)

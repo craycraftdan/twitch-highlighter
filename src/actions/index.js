@@ -69,7 +69,7 @@ export const getLiveStatus = (streamerName) => {
 }
 
 export const getChannelVideos = (streamerName) => {
-    const url = `https://api.twitch.tv/kraken/channels/${streamerName}/videos?client_id=${clientID}&limit=20`
+    const url = `https://api.twitch.tv/kraken/channels/${streamerName}/videos?client_id=${clientID}&limit=21`
     return (dispatch) => {
         fetch(url)
             .then(res => res.json())

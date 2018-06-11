@@ -6,6 +6,7 @@ export const VideosBox = styled.div`
     justify-content: flex-start;
     align-items: center;
     padding: 0px 5px 0px 5px;
+    min-height: 100vh;
 `
 export const Title = styled.h3`
     margin-bottom: 10px;

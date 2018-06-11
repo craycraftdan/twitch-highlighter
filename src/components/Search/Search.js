@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { Input, Filter } from './styles';
-
-import { getStreamer, getLiveStatus, getChannelVideos, getChannelClips, getChannelUploads } from '../../actions/index';
+import { 
+    getStreamer, 
+    getLiveStatus, 
+    getChannelVideos, 
+    getChannelClips, 
+    getChannelUploads } from '../../actions/index';
+import { CHANGE_FILTER } from '../../actions/constants';
 
 class Search extends Component {
     constructor(props) {
@@ -23,7 +27,9 @@ class Search extends Component {
     }
 
     updateFilter(e) {
-        this.setState({filter: e.target.value});
+        const filter= e.target.value;
+        this.setState({filter});
+        this.props.updateStateFilter({filter})
     }
 
     validateStreamer() {
@@ -69,7 +75,8 @@ const mapDispatchTopProps = (dispatch) => ({
     getLiveInfo: (streamer) => dispatch(getLiveStatus(streamer)),
     getStreamerVideos: (streamer) => dispatch(getChannelVideos(streamer)),
     getStreamerClips: (streamer) => dispatch(getChannelClips(streamer)),
-    getStreamerUploads: (streamer) => dispatch(getChannelUploads(streamer))
+    getStreamerUploads: (streamer) => dispatch(getChannelUploads(streamer)),
+    updateStateFilter: ({filter}) => dispatch({type: CHANGE_FILTER, payload: filter})
 });
 
 export default connect(null, mapDispatchTopProps)(Search);

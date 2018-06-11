@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getStreamer, getLiveStatus, getChannelClips } from '../../actions/index';
+import { 
+    getStreamer, 
+    getLiveStatus, 
+    getChannelClips, 
+    getChannelUploads, 
+    getChannelVideos } from '../../actions/index';
 
 import HeartIconFilled from '../HeartFilled/index';
 import  {
@@ -19,9 +24,16 @@ class LeftNav extends Component {
     }
 
     update(streamer) {
+        const { filter } = this.props;
         this.props.getStreamerInfo(streamer);
         this.props.getLiveInfo(streamer);
-        this.props.getStreamerClips(streamer);
+        if(filter === 'Clips') {
+            this.props.getStreamerClips(streamer);
+        } else if(filter === 'Uploads') {
+            this.props.getStreamerUploads(streamer);
+        } else if(filter === 'Highlights') {
+            this.props.getStreamerVideos(streamer);
+        }
     }
 
     render() {
@@ -57,14 +69,15 @@ class LeftNav extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    favs: state.favoriteStreamers.streamerList
+    favs: state.favoriteStreamers.streamerList,
+    filter: state.appState.filter ? state.appState.filter : "Clips"
 });
 const mapDispatchTopProps = (dispatch) => ({
     getStreamerInfo: (streamer) => dispatch(getStreamer(streamer)),
     getLiveInfo: (streamer) => dispatch(getLiveStatus(streamer)),
-    // getStreamerVideos: (streamer) => dispatch(getChannelVideos(streamer)),
+    getStreamerVideos: (streamer) => dispatch(getChannelVideos(streamer)),
     getStreamerClips: (streamer) => dispatch(getChannelClips(streamer)),
-    // getStreamerUploads: (streamer) => dispatch(getChannelUploads(streamer))
+    getStreamerUploads: (streamer) => dispatch(getChannelUploads(streamer))
 });
 
 export default connect(mapStateToProps, mapDispatchTopProps)(LeftNav)
