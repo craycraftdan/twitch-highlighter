@@ -20,6 +20,12 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [X] Style videos 
 * [X] Add Ability to remove a video
 
+### Landing Page
+* [ ] Add logo
+* [ ] Add quick tips
+* [ ] Rotate quick tips on a timer, fadein/out
+* [ ] Create a fake recently created playlist section
+
 ### Other Items
 * [X] Setup all needed API calls so I can use them as needed
 * [X] Convert the app to Redux

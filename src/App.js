@@ -9,6 +9,7 @@ import TopNav from './components/TopNav/index';
 import LeftNav from './components/LeftSideMenu/index';
 import RightNav from './components/RightSideMenu/index';
 import PlayListBuilder from './pages/PlaylistBuilder/index';
+import LandingPage from './pages/Landing/index';
 
 
 const FlexThree = styled.div`
@@ -24,6 +25,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.activeStreamer)
     return (
       <div>
         <TopNav />
@@ -31,9 +33,11 @@ class App extends Component {
           <FlexThree>
 
             <LeftNav />
-
-            <PlayListBuilder />
-
+            {
+              this.props.activeStreamer.streamer
+                ? <PlayListBuilder />
+                : <LandingPage />
+            }
             <RightNav />
 
           </FlexThree>
@@ -48,4 +52,8 @@ const mapDispatchTopProps = (dispatch) => ({
   getTop: (streamer) => dispatch(getTopGamesInfo())
 });
 
-export default connect(null, mapDispatchTopProps)(App);
+const mapStateToProps = (state) => ({
+  activeStreamer: state.activeStreamer
+});
+
+export default connect(mapStateToProps, mapDispatchTopProps)(App);

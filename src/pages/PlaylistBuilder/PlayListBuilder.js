@@ -14,16 +14,8 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    max-width: 1220px;
+    width: calc(100% - (323px + 75px));
     margin-bottom: 60px;
-
-    @media only screen and (max-width: 1650px) {
-        max-width: 800px;
-    }
-
-    @media only screen and (max-width: 1240px) {
-        max-width: 600px;
-    }
 
 `
 
