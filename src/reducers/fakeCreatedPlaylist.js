@@ -101,5 +101,35 @@ export const CreatedPlaylistData = [
             },
         ]
     },
+    {
+        _id: 4123664274209,
+        playlist: "Flick Shots",
+        videos: [
+            {
+                title: "1g ",
+                game: "PLAYERUNKNOWN'S BATTLEGROUNDS",
+                thumbnails: [
+                    {url: "https://clips-media-assets2.twitch.tv/AT-cm%7C252098840-preview-480x272.jpg"}
+                ],
+                published_at: "2018-06-06T19:37:00Z",
+                views: 61095,
+                duration: 36.6,
+                embed_url: "https://clips.twitch.tv/embed?clip=WimpyAbstemiousGrasshopperPeteZaroll&tt_medium=clips_api&tt_content=embed",
+                embed_html: "<iframe src='https://clips.twitch.tv/embed?clip=WimpyAbstemiousGrasshopperPeteZaroll&tt_medium=clips_api&tt_content=embed' width='640' height='360' frameborder='0' scrolling='no' allowfullscreen='true'></iframe>"
+            },           
+            {
+                title: "shroud flick ",
+                game: "Counter-Strike: Global Offensive",
+                thumbnails: [
+                    {url: "https://clips-media-assets2.twitch.tv/28885071280-offset-31240-preview-480x272.jpg"}
+                ],
+                published_at: "2018-05-30T04:15:01Z",
+                views: 121927,
+                duration: 30,
+                embed_url: "https://clips.twitch.tv/embed?clip=TenuousSolidCockroachDxCat&tt_medium=clips_api&tt_content=embed",
+                embed_html: "<iframe src='https://clips.twitch.tv/embed?clip=TenuousSolidCockroachDxCat&tt_medium=clips_api&tt_content=embed' width='640' height='360' frameborder='0' scrolling='no' allowfullscreen='true'></iframe>"
+            },
+        ]
+    },
 ]
 

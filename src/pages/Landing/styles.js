@@ -51,7 +51,6 @@ export const ToolTipBoxTop = styled.div`
     position: relative;
 `
 export const LogoContainer = styled.div`
-    margin-top: 50px;
     width: 90%;
     height: 209px;
     display: flex;

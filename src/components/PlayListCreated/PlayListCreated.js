@@ -6,10 +6,17 @@ import {
     PlayListBox,
     Chev,
     Thumbnail,
-    FadedCover
+    FadedCover,
+    Share,
+    PlayIcon,
+    IconContainer,
+    Title,
+    Subtitle,
 } from './styles';
 
 const chevron = require('./chevron.svg');
+const shareIcon = require('./button-share.svg');
+const playIcon = require('./button-play.svg');
 
 class PlayListCreated extends Component {
     render() {
@@ -22,8 +29,15 @@ class PlayListCreated extends Component {
                     playlist.map(item => {
                         return (
                             <PlayListBox key={item.playlist}>
-                                <FadedCover />
                                 <Thumbnail src={item.videos[0].thumbnails[0].url} />  
+                                <FadedCover>
+                                    <IconContainer>
+                                        <PlayIcon src={playIcon} />
+                                        <Share src={shareIcon} />
+                                    </IconContainer>
+                                </FadedCover>
+                                <Title>{item.playlist}</Title>
+                                <Subtitle>{item.videos.length} videos</Subtitle>
                             </PlayListBox>
                         )
                     })
