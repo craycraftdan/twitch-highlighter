@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PlayListCreated from '../../components/PlayListCreated/index';
 import { 
     Container,
     ToolTips,
@@ -8,11 +7,9 @@ import {
     ToolTipBoxTop,
     PointerTop,
     PointerLeft,
-    PointerRight,
-    CreatedPlaylist } from './styles';
+    PointerRight, } from './styles';
 
 const TwitchHighlighter = require('./TwitchHighlighter.png')
-
 
 class LandingPage extends Component {
     render() {
@@ -35,9 +32,6 @@ class LandingPage extends Component {
                 <LogoContainer>
                     <img src={TwitchHighlighter} alt="twitchLogo"/>
                 </LogoContainer>
-                <CreatedPlaylist>
-                    <PlayListCreated />
-                </CreatedPlaylist>
             </Container>
         )
     }

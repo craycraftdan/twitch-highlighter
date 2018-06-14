@@ -7,14 +7,12 @@ export const Container = styled.div`
     margin-bottom: 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    position: relative;
 `
 export const ToolTips = styled.div`
-    position: absolute;
+    margin-top: 15px;
     padding: 15px 25px 0px 25px;
-    top: 15px;
     width: 95%;
     height: 300px;
     display: flex;
@@ -28,8 +26,9 @@ export const ToolTips = styled.div`
     opacity: 0.9;
 `
 export const ToolTipBoxSide = styled.div`
-    width: 196px;
-    height: 96px;
+    width: 156px;
+    height: 56px;
+    font-size: 14px;
     background-color: #6441A4;
     border-radius: 2px;
     align-self: center;
@@ -40,8 +39,8 @@ export const ToolTipBoxSide = styled.div`
     position: relative;
 `
 export const ToolTipBoxTop = styled.div`
-    width: 380px;
-    height: 60px;
+    width: 330px;
+    height: 50px;
     background-color: #6441A4;
     border-radius: 2px;
     padding: 3px;
@@ -53,6 +52,7 @@ export const ToolTipBoxTop = styled.div`
 export const LogoContainer = styled.div`
     width: 90%;
     height: 209px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
 

@@ -6,7 +6,7 @@ const TwitchLogo = (props) => {
         <img 
             src={logo} 
             alt="Kiwi standing on oval"
-            style={props.style}
+            style={{...props.style, cursor: 'pointer'}}
             >
         </img>
     )

@@ -12,6 +12,8 @@ import {
     IconContainer,
     Title,
     Subtitle,
+    ChevBoxLeft,
+    ChevBoxRight
 } from './styles';
 
 const chevron = require('./chevron.svg');
@@ -24,10 +26,13 @@ class PlayListCreated extends Component {
         console.log(playlist)
         return (
             <Container>
-                <Chev src={chevron}/>
+                <ChevBoxLeft>
+                    <Chev src={chevron}/>
+                </ChevBoxLeft>
                 {
                     playlist.map(item => {
                         return (
+                            
                             <PlayListBox key={item.playlist}>
                                 <Thumbnail src={item.videos[0].thumbnails[0].url} />  
                                 <FadedCover>
@@ -42,7 +47,9 @@ class PlayListCreated extends Component {
                         )
                     })
                 }
-                <Chev src={chevron} right/>
+                <ChevBoxRight>
+                    <Chev src={chevron} right/>
+                </ChevBoxRight>
             </Container>
         )
     }

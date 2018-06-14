@@ -1,6 +1,7 @@
 import { 
     GET_STREAMER_INFO, 
     GET_LIVE_STATUS,
+    CLEAR_STREAMER,
     GET_STREAMER_VIDEOS } from '../actions/constants';
 
 
@@ -12,6 +13,8 @@ const activeStreamer = (state = [], action) => {
             return {...state, streamer:  {...state.streamer, online: action.payload.online, viewers: action.payload.viewers } }
         case GET_STREAMER_VIDEOS: 
             return {...state, streamer: {...state.streamer, videos: action.payload } }
+        case CLEAR_STREAMER:
+            return state = []
         default: 
             return state
     }

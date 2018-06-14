@@ -16,7 +16,6 @@ const Container = styled.div`
     align-items: center;
     width: calc(100% - (323px + 75px));
     margin-bottom: 60px;
-
 `
 
 class PlayListBuilder extends Component {
@@ -44,7 +43,6 @@ class PlayListBuilder extends Component {
             </Container>
         )
     }
-    
 }
 
 const mapStateToProps = (state) => ({

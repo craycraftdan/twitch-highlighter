@@ -1,0 +1,16 @@
+<svg id="video-player" xmlns="http://www.w3.org/2000/svg" viewBox="4194 2735 54 55">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_83" data-name="Group 83" transform="translate(4193.5 2735)">
+    <path id="Path_17" data-name="Path 17" class="cls-1" d="M22.019,25.877a1,1,0,0,0,1.018-.033l11-7a1,1,0,0,0,0-1.688l-11-7A1,1,0,0,0,21.5,11V25A1,1,0,0,0,22.019,25.877ZM23.5,12.821,31.638,18,23.5,23.179Z"/>
+    <path id="Path_18" data-name="Path 18" class="cls-1" d="M.5,0V55h54V0Zm52,2V35H2.5V2ZM2.5,53V37h50V53Z"/>
+    <path id="Path_19" data-name="Path 19" class="cls-1" d="M47.5,44h-24V42a1,1,0,0,0-2,0v2h-4a1,1,0,0,0,0,2h4v2a1,1,0,0,0,2,0V46h24a1,1,0,0,0,0-2Z"/>
+    <path id="Path_20" data-name="Path 20" class="cls-1" d="M7.5,41a1,1,0,0,0-1,1v6a1,1,0,0,0,2,0V42A1,1,0,0,0,7.5,41Z"/>
+    <path id="Path_21" data-name="Path 21" class="cls-1" d="M11.5,41a1,1,0,0,0-1,1v6a1,1,0,0,0,2,0V42A1,1,0,0,0,11.5,41Z"/>
+  </g>
+</svg>

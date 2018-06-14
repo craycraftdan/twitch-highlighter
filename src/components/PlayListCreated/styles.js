@@ -2,13 +2,25 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     overflow: hidden;
     color: white;
+    position: relative;
+    padding: 0px 35px 0px 35px;
+`
+export const ChevBoxLeft = styled.div`
+    position: absolute;
+    left: 0px;
+    align-self: center;
+`
+export const ChevBoxRight = styled.div`
+    position: absolute;
+    right: 0px;
+    align-self: center;
 `
 export const Chev = styled.img`
     width: 20px;
@@ -26,6 +38,7 @@ export const PlayListBox = styled.div`
     height: 155px;
     font-size: 14px;
     position: relative;
+    margin: 10px;
 
     &:hover > div {
         width: 211px;

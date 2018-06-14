@@ -8,6 +8,7 @@ import {
     getChannelClips, 
     getChannelUploads } from '../../actions/index';
 import { CHANGE_FILTER } from '../../actions/constants';
+import { withRouter } from 'react-router';
 
 class Search extends Component {
     constructor(props) {
@@ -43,6 +44,7 @@ class Search extends Component {
 
     onKeyPress(e) {
         const streamer = this.state.streamer;
+        const goto = this.props.history.push; //withRouter import
         if(e.key === 'Enter' && this.validateStreamer()) {
             this.props.getStreamerInfo(streamer);
             this.props.getLiveInfo(streamer);
@@ -54,6 +56,7 @@ class Search extends Component {
                 this.props.getStreamerUploads(streamer)
             }   
         } 
+        goto('/PlayListBuilder')
     }
 
     render() {
@@ -79,4 +82,5 @@ const mapDispatchTopProps = (dispatch) => ({
     updateStateFilter: ({filter}) => dispatch({type: CHANGE_FILTER, payload: filter})
 });
 
-export default connect(null, mapDispatchTopProps)(Search);
+export default withRouter(connect(null, mapDispatchTopProps)(Search));
+                //WRAP TO PASS GOTO AND HISTORY REACT ROUTER ON PROPS
