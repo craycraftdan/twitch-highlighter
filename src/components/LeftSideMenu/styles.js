@@ -21,8 +21,8 @@ export const PlayerBox = styled.div`
     border-bottom: 2px solid rgba(255, 255, 255, 0.4);
 `
 export const PlayerIcon = styled.img`
-    width: 36px; 
-    height: 36px;
+    width: 32px; 
+    height: 32px;
     opacity: 0.7;
     cursor: pointer;
 `

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    margin-bottom: 60px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -11,6 +12,21 @@ export const Container = styled.div`
     color: white;
     position: relative;
     padding: 0px 35px 0px 35px;
+
+    @media(max-width: 966px) {
+        justify-content: center;
+    }
+
+`
+export const MainTitle = styled.h3`
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+    @media(max-width: 966px) {
+        text-align:center;
+    }
 `
 export const ChevBoxLeft = styled.div`
     position: absolute;

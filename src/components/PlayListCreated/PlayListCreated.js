@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import {
     Container,
@@ -10,6 +9,7 @@ import {
     Share,
     PlayIcon,
     IconContainer,
+    MainTitle,
     Title,
     Subtitle,
     ChevBoxLeft,
@@ -22,15 +22,15 @@ const playIcon = require('./button-play.svg');
 
 class PlayListCreated extends Component {
     render() {
-        const { playlist } = this.props 
-        console.log(playlist)
+        const { videos, title } = this.props 
         return (
             <Container>
+                <MainTitle>{title}</MainTitle>
                 <ChevBoxLeft>
                     <Chev src={chevron}/>
                 </ChevBoxLeft>
                 {
-                    playlist.map(item => {
+                    videos.map(item => {
                         return (
                             
                             <PlayListBox key={item.playlist}>
@@ -55,9 +55,7 @@ class PlayListCreated extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    playlist: state.createdPlayList
-});
 
-export default connect(mapStateToProps)(PlayListCreated)
+
+export default PlayListCreated
 

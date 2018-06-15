@@ -13,7 +13,7 @@ const TopNav = (props) => {
         props.clearStreamer()
         goto('/')
     }
-    return (
+        return (
         <StyledNav>
             <div onClick={goHome}>
                 <TwitchLogo style={{width: '30px', height: '30px', marginLeft: '24px'}}/>
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => ({
     clearStreamer: () => dispatch({type: CLEAR_STREAMER, payload: null})
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(TopNav));
+export default withRouter(connect(null, mapDispatchToProps)(TopNav))
