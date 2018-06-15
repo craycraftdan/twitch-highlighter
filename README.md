@@ -1,3 +1,5 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
 # Twitch Highlighter
 The purpose of this app is to give the twitch viewers (fans) a chance to build playlist from clips/highlights/uploads of their favorite twitch streamers and then share them with their friends.
 
