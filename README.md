@@ -21,21 +21,22 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 * [X] Add Ability to remove a video
 
 ### Landing Page
-* [ ] Add logo
-* [ ] Add quick tips
+* [X] Add logo
+* [X] Add quick tips
 * [ ] Rotate quick tips on a timer, fadein/out
-* [ ] Create a fake recently created playlist section
+* [X] Create a fake recently created playlist section - on playlistviewer page not landing (reusable component now)
 
 ### Other Items
 * [X] Setup all needed API calls so I can use them as needed
 * [X] Convert the app to Redux
-* [ ] Build out the app help stuff before searching
+* [X] Build out the app help stuff before searching
 * [X] Layout the loading components and build HOC
 * [ ] Plan how to do the backend, DB and API
-* [ ] Design a landing page
+* [X] Design a landing page
 * [ ] Design a auth page with twitch
 * [ ] Update fonts on the app
 * [X] Add Drag and drop ability when creating a playlist
+* [X] Add React Rotuer
 * [ ] When sharing playlist or video look at sharing to social media options
 * [X] When using fav streamer from left auto update that streamer name to search input
 * [ ] Add a filter to video list by game
@@ -49,8 +50,8 @@ The purpose of this app is to give the twitch viewers (fans) a chance to build p
 ### Issues
 * [X] Duration not displaying on highlights
 * [X] flexbox for only two videos doesn't justify content correctly
-* [ ] Have favs when clicked populate videos based on current selected filter
-* [ ] Main content needs to scroll up and the menus need to be fixed
+* [X] Have favs when clicked populate videos based on current selected filter
+* [X] Main content needs to scroll up and the menus need to be fixed
 * [ ] Review app and add UI sugar
-* [ ] Playlist allows you to add two of the same videos, fix that.
+* [X] Playlist allows you to add two of the same videos, fix that.
 * [ ] video list needs to be same height as right nav
