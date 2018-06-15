@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router';
 import {
     Container,
     PlayListBox,
@@ -21,6 +21,12 @@ const shareIcon = require('./button-share.svg');
 const playIcon = require('./button-play.svg');
 
 class PlayListCreated extends Component {
+
+    openPlaylist = (playlist) => {
+        const { push } = this.props.history;
+        push(`/PlayListViewer/${playlist._id}`)
+    } 
+
     render() {
         const { videos, title } = this.props 
         return (
@@ -37,7 +43,7 @@ class PlayListCreated extends Component {
                                 <Thumbnail src={item.videos[0].thumbnails[0].url} />  
                                 <FadedCover>
                                     <IconContainer>
-                                        <PlayIcon src={playIcon} />
+                                        <PlayIcon src={playIcon} onClick={() => this.openPlaylist(item)}/>
                                         <Share src={shareIcon} />
                                     </IconContainer>
                                 </FadedCover>
@@ -57,5 +63,5 @@ class PlayListCreated extends Component {
 
 
 
-export default PlayListCreated
+export default withRouter(PlayListCreated)
 

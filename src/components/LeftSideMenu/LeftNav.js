@@ -28,6 +28,7 @@ class LeftNav extends Component {
 
     update(streamer) {
         const { filter } = this.props;
+        const goto = this.props.history.push;
         this.props.getStreamerInfo(streamer);
         this.props.getLiveInfo(streamer);
         if(filter === 'Clips') {
@@ -37,6 +38,7 @@ class LeftNav extends Component {
         } else if(filter === 'Highlights') {
             this.props.getStreamerVideos(streamer);
         }
+        goto('/PlayListBuilder')
     }
 
     goToPlaylist = () => {
